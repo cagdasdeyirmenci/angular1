@@ -3,12 +3,11 @@ import {EventService} from './event.service';
 import {ToastrService} from '../common/toastr.service';
 
 @Component({
-  selector: 'app-event-list',
   template: `
     <div>
       <h4>List of Events</h4>
       <div class="row">
-        <app-event-thumbnail *ngFor="let event of events" class="col-md-1" (click)="toastMessage(event.name)"
+        <app-event-thumbnail *ngFor="let event of events" class="col-md-2" (mouseenter)="toastMessage(event.name)"
                              (eventEmitter)="handleEventClicked($event)" [event]="event"></app-event-thumbnail>
       </div>
     </div>
@@ -30,7 +29,7 @@ export class EventListComponent implements OnInit {
   }
 
   toastMessage(name: string) {
-    this.toastr.success('Configuration Saved.', name);
+    this.toastr.success(`Click to enter detail page for ${name} conference`);
     // this.toastr.info('deneme', 'Uyarı');
     // this.toastr.error('deneme', 'Uyarı');
     // this.toastr.warning('deneme', 'Uyarı');
